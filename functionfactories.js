@@ -14,7 +14,5 @@ function makeGreeting(language) {
         if (language === 'fr') {
             console.log('Bonjour ' + firstname + ' ' + lastname);
         }
-
     }
-
 }
