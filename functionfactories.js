@@ -14,5 +14,13 @@ function makeGreeting(language) {
         if (language === 'fr') {
             console.log('Bonjour ' + firstname + ' ' + lastname);
         }
+
     }
+
 }
+
+var greetEnglish = makeGreeting('en');
+var greetFrench = makeGreeting('fr');
+
+greetEnglish('Ollie', 'English');
+greetFrench('Ollie', 'French');
