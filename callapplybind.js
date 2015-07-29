@@ -36,7 +36,7 @@ var logName = function(lang1, lang2) {
     console.log('Arguments: ' + lang1 + ' ' + lang2);
     console.log('----------');
 
-}.bind(person);
+}.bind(person); // .call(person, 'en', 'fr'); etc...
 
 /* logName has a bind function attached , we're passing
  * our 'this' to it and passing 'en' for its 'lang1' parameter
@@ -44,9 +44,9 @@ var logName = function(lang1, lang2) {
  * Looks like the call function allows you to choose
  * the 'this' and you can pass parameters to it too
  */
-logName('en');
-logName.call(person, 'en', 'es');
-logName.apply(person, ['en', 'es']); // an array version
+logName('en'); // only works when you .bind(person) the end of logName
+logName.call(person, 'en', 'fr');
+logName.apply(person, ['en', 'fr']); // an array version
 /* These are great ways to call or invoke a function
  *
  */
