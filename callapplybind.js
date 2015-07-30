@@ -99,4 +99,11 @@ console.log(multiply(5, 5)); // original function
  *
  * You can also borrow other variables in arrays by setting the 'this' to any array!
  * That means you can use the same function, but with different arrays & values + calling it!
+ *
+ * call + apply
+ * invoke the function and setup the 'this' keyword, and pass paramters
+ *
+ * bind
+ * creates a copy of the function, lets you setup what the 'this' keyword and set
+ * permanent paramters
  */
