@@ -1,4 +1,6 @@
 ## LearningJS
+This repository is updated daily to learn Javascript. It is also a place to try,
+learn and test Javascript 2015, aka ECMASCRIPT 6!
 + Object Oriented Programming
 + Functional Programming
 + Javascript
