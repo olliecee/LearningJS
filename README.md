@@ -9,7 +9,6 @@ learn and test Javascript 2015, aka ECMASCRIPT 6!
 + Syntax Parsers
 + Execution Contexts
 + Lexical Environments
-
 + Name / Value Pairs & Objects
 + Creation & Hoisting
 + 'undefined'
