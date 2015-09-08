@@ -48,3 +48,4 @@ learn and test Javascript 2015, aka ECMASCRIPT 6!
 
 ## Object Oriented Javascript and Prototypal Inheritance
 + Classical vs Prototypal Inheritance
++ Clarifying and Understanding Prototypes
