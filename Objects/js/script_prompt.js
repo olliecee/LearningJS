@@ -41,16 +41,16 @@ function print(message) {
   selector.innerHTML = message;
 }
 
+// Party starts now
 while(!foundName) {
   answer = prompt('Type in a student name to obtain student records');
 
-  if (answer === 'quit') {
+  if (answer === null || answer === 'quit') {
     foundName = true;
   }
   else {
     for(i = 0; i < students.length; i++) {
-
-    if (answer === students[i].name) {
+      if (answer === students[i].name) {
         html += '<p>' +
                 'Name: ' + students[i].name + '<br/>' + 
                 'Tracks: ' + students[i].tracks.join(', ') + '<br/>' + 
