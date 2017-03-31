@@ -9,8 +9,8 @@ var questions = [
 ]
 var answer;
 
-function print(message) {
-  var selector = document.getElementById('output');
+var print = (message) => {
+  const selector = document.getElementById('output');
   selector.innerHTML = message;
 }
 

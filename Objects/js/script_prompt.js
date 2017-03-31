@@ -1,8 +1,8 @@
 // Variables
-var html = '';
-var answer;
-var foundName = false;
-var students = [
+let html = '';
+let answer;
+let foundName = false;
+const students = [
   {
     name: 'Sarah Kay',
     tracks: ['HTML', 'CSS', 'JavaScript'],
@@ -36,8 +36,8 @@ var students = [
 ];
 
 // Functions
-function print(message) {
-  var selector = document.getElementById('application');
+const print = (message) => {
+  const selector = document.getElementById('application');
   selector.innerHTML = message;
 }
 
@@ -49,7 +49,7 @@ while(!foundName) {
     foundName = true;
   }
   else {
-    for(i = 0; i < students.length; i++) {
+    for(let i = 0; i < students.length; i++) {
       if (answer === students[i].name) {
         html += '<p>' +
                 'Name: ' + students[i].name + '<br/>' + 
