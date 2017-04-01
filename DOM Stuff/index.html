@@ -7,12 +7,24 @@
 <body>
     <h1 id="heading">This is a heading</h1>
     <p>What a wonderful paragraph</p>
+
     <form>
-        <input id="myTextInput" type="text"/>
-        <button id="generate" type="button">Generate</button>
-        <button id="myButton" type="submit">Change headline color</button>
-        <button type="reset">Reset</button>
+        <fieldset>
+            <input class="textHeading" type="text"/>
+            <button class="buttonChangeHeading" type="button">Change title text</button>
+        </fieldset>
+        <fieldset>
+            <input id="myTextInput" type="text"/>
+            <button id="generate" type="button">Generate</button>
+            <button id="myButton" type="submit">Change headline color</button>
+        </fieldset>
+        <fieldset>
+            <p>This hides the list below</p>
+            <button class="buttonToggle" type="button">Hide List</button>
+        </fieldset>
+        <button type="reset">Reset All</button>
     </form>
+
     <ul>
         <li>Grapes</li>
         <li>Fruits</li>
@@ -22,8 +34,15 @@
         <li class="error">NO way</li>
     </ul>
 
+    <form class="itemAdd">
+        <input type="text"/>
+        <button type="submit">Submit list item</button>
+        <button class="remove" type="button">Remove list item</button>
+    </form>
+
     <div id="application"></div>
 
 <script src="js/script.js"></script>
+<script src="js/temp.js"></script>
 </body>
 </html>
