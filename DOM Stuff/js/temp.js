@@ -8,7 +8,6 @@ function exec(func, arg) {
 }
 
 // Passing a function into another function
-// The say(); function is the callback function
 exec(say, 'ok');
 
 

@@ -10,6 +10,7 @@ let myTextInput = document.getElementById('myTextInput');
 
 // Using querySelector
 const theList = document.querySelector('ul');
+let theListItems = document.querySelectorAll('ul li');
 const textHeading = document.querySelector('.textHeading');
 const buttonChangeHeading = document.querySelector('.buttonChangeHeading');
 const buttonToggle = document.querySelector('.buttonToggle');
@@ -54,15 +55,31 @@ const randomNumber = () => {
 }
 
 // Event Listeners
+theList.addEventListener('pointerover', function(event) {
+	let element = event.target
+
+	if (element.tagName == 'li' || element.tagName == 'LI') {
+		element.addEventListener('pointerenter', function() {
+			element.style.textTransform = 'uppercase';
+		});
+
+		element.addEventListener('pointerleave', function() {
+			element.style.textTransform = 'lowercase';
+		});
+	}
+});
+
 listAddButton.addEventListener('click', (event) => {
 	event.preventDefault();
 
 	let userInput = listAddInput.value;
 	let item = document.createElement('li');
+	let newItem;
 	item.textContent = userInput;
 
 	theList.appendChild(item);
-
+	
+	theListItems = document.querySelectorAll('ul li');
 	emptyInput(listAddInput);
 });
 
