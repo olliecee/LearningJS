@@ -69,6 +69,30 @@ theList.addEventListener('pointerover', function(event) {
 	}
 });
 
+theList.addEventListener('click', function(event) {
+	let button = event.target;
+	let li = button.parentNode;
+	let liRefUp = button.parentNode.previousElementSibling;
+	let liRefDown = button.parentNode.nextElementSibling;
+	let ul = li.parentNode;
+
+	if (button.className == 'up') {
+		if (liRefDown) {
+			ul.insertBefore(li, liRefUp);
+		}
+	}
+
+	if (button.className == 'down') {
+		if (liRefDown) {
+			ul.insertBefore(liRefDown, li);
+		}
+	}
+
+	if (button.className == 'remove') {
+		ul.removeChild(li);
+	}
+});
+
 listAddButton.addEventListener('click', (event) => {
 	event.preventDefault();
 
@@ -115,4 +139,41 @@ for (let i = 0; i < myList.length; i++) {
 
 for (let i = 0; i < errorList.length; i++) {
 	errorList[i].style.color = 'red';
+}
+
+for (let i = 0; i < theListItems.length; i++) {
+	let buttons,
+		remove = document.createElement('button'),
+		up = document.createElement('button'),
+		down = document.createElement('button');
+
+	remove.textContent = 'Remove';
+	up.textContent = 'Up';
+	down.textContent = 'Down';
+
+	remove.className = 'remove';
+	up.className = 'up';
+	down.className = 'down';
+
+	remove.style.cssFloat = 'right';
+	up.style.cssFloat = 'right';
+	down.style.cssFloat = 'right';
+	
+	theListItems[i].appendChild(remove);
+	
+	// Up Button
+	if (theListItems[i] == theListItems[0]) {
+		console.log('button up success');
+	}
+	else {
+		theListItems[i].appendChild(up);
+	}
+
+	// Down Button
+	if (theListItems[i] == theListItems[theListItems.length-1]) {
+		console.log('button down success')
+	}
+	else {
+		theListItems[i].appendChild(down);
+	}
 }
