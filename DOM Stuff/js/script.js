@@ -9,8 +9,8 @@ const myButton = document.getElementById('myButton');
 let myTextInput = document.getElementById('myTextInput');
 
 // Using querySelector
-const theList = document.querySelector('ul');
-let theListItems = document.querySelectorAll('ul li');
+const updateList = document.querySelector('ul');
+let updateListItems = document.querySelectorAll('ul li');
 const textHeading = document.querySelector('.textHeading');
 const buttonChangeHeading = document.querySelector('.buttonChangeHeading');
 const buttonToggle = document.querySelector('.buttonToggle');
@@ -41,8 +41,42 @@ const listToggle = (element, button) => {
 	return display;
 }
 
-const emptyInput = (element) => element.value = '';
+// Removes list item buttons
+function updateState() {
+	let liFirst = document.querySelector('ul').firstElementChild;
+	let liLast = document.querySelector('ul').lastElementChild;
+	let updateList = document.querySelector('ul');
 
+	console.log('Total children: ', updateList.children.length);
+	for (let i = 0; i < updateList.children.length; i++) {
+		console.log(updateList.children[i].children.length);
+		console.log(updateList.children[i]);
+
+		if (updateList.children[i].children.length == 2) {
+			console.log('This has 2 elements');
+			for (let x = 0; x < updateList.children[i].children.length; x++) {
+				console.log(updateList.children[i].children[x]);
+				updateList.children[i].removeChild(updateList.children[i].children[x]);
+			}
+		}
+	}
+
+	// First <li></li>
+	for (let i = 0; i < liFirst.children.length; i++) {
+		if (liFirst.children[i].className == 'up') {
+			liFirst.removeChild(liFirst.children[i]);
+		}
+	}
+
+	// Last <li></li>
+	for (let i = 0; i < liLast.children.length; i++) {
+		if (liLast.children[i].className == 'down') {
+			liLast.removeChild(liLast.children[i]);
+		}
+	}
+}
+
+const emptyInput = (element) => element.value = '';
 const getText = (element) => element.value;
 
 const setNumbers = (lowest, highest) => {
@@ -54,8 +88,35 @@ const randomNumber = () => {
 	return setNumbers(lowerNumber, upperNumber);
 }
 
+const buttonAdd = (element) => {
+	let remove = document.createElement('button');
+	let up = document.createElement('button');
+	let down = document.createElement('button');
+
+	remove.textContent = 'Remove';
+	remove.style.cssFloat = 'right';
+	remove.className = 'remove';
+	
+	up.textContent = 'Up';
+	up.style.cssFloat = 'right';
+	up.className = 'up';
+
+	down.textContent = 'Down';
+	down.style.cssFloat = 'right';
+	down.className = 'down';
+
+	try {
+		element.appendChild(remove);
+		element.appendChild(up);
+		element.appendChild(down);
+	}
+	catch(e) {
+		console.log('You must provide an element as an argument to buttonAdd(arg);');
+	}
+}
+
 // Event Listeners
-theList.addEventListener('pointerover', function(event) {
+updateList.addEventListener('pointerover', function(event) {
 	let element = event.target
 
 	if (element.tagName == 'li' || element.tagName == 'LI') {
@@ -69,7 +130,7 @@ theList.addEventListener('pointerover', function(event) {
 	}
 });
 
-theList.addEventListener('click', function(event) {
+updateList.addEventListener('click', function(event) {
 	let button = event.target;
 	let li = button.parentNode;
 	let liRefUp = button.parentNode.previousElementSibling;
@@ -77,7 +138,7 @@ theList.addEventListener('click', function(event) {
 	let ul = li.parentNode;
 
 	if (button.className == 'up') {
-		if (liRefDown) {
+		if (liRefUp) {
 			ul.insertBefore(li, liRefUp);
 		}
 	}
@@ -101,19 +162,19 @@ listAddButton.addEventListener('click', (event) => {
 	let newItem;
 	item.textContent = userInput;
 
-	theList.appendChild(item);
-	
-	theListItems = document.querySelectorAll('ul li');
+	buttonAdd(item);
+	updateList.appendChild(item);
+	updateState();
 	emptyInput(listAddInput);
 });
 
 listRemoveButton.addEventListener('click', () => {
 	let lastItem = document.querySelector('ul li:last-child');
-	theList.removeChild(lastItem);
+	updateList.removeChild(lastItem);
 });
 
 buttonToggle.addEventListener('click', () => {
-	theList.style.display = listToggle(theList, buttonToggle);
+	updateList.style.display = listToggle(updateList, buttonToggle);
 });
 
 buttonChangeHeading.addEventListener('click', () => {
@@ -133,47 +194,7 @@ myButton.addEventListener('click', (e) => {
 });
 
 // For loops
-for (let i = 0; i < myList.length; i++) {
-	myList[i].style.color = 'blue';
-}
-
-for (let i = 0; i < errorList.length; i++) {
-	errorList[i].style.color = 'red';
-}
-
-for (let i = 0; i < theListItems.length; i++) {
-	let buttons,
-		remove = document.createElement('button'),
-		up = document.createElement('button'),
-		down = document.createElement('button');
-
-	remove.textContent = 'Remove';
-	up.textContent = 'Up';
-	down.textContent = 'Down';
-
-	remove.className = 'remove';
-	up.className = 'up';
-	down.className = 'down';
-
-	remove.style.cssFloat = 'right';
-	up.style.cssFloat = 'right';
-	down.style.cssFloat = 'right';
-	
-	theListItems[i].appendChild(remove);
-	
-	// Up Button
-	if (theListItems[i] == theListItems[0]) {
-		console.log('button up success');
-	}
-	else {
-		theListItems[i].appendChild(up);
-	}
-
-	// Down Button
-	if (theListItems[i] == theListItems[theListItems.length-1]) {
-		console.log('button down success')
-	}
-	else {
-		theListItems[i].appendChild(down);
-	}
+for (let i = 0; i < updateListItems.length; i++) {
+	buttonAdd(updateListItems[i]);
+	updateState();
 }
