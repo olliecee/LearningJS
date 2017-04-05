@@ -47,19 +47,19 @@ function updateState() {
 	let liLast = document.querySelector('ul').lastElementChild;
 	let updateList = document.querySelector('ul');
 
-	console.log('Total children: ', updateList.children.length);
-	for (let i = 0; i < updateList.children.length; i++) {
-		console.log(updateList.children[i].children.length);
-		console.log(updateList.children[i]);
+	// console.log('Total children: ', updateList.children.length);
+	// for (let i = 0; i < updateList.children.length; i++) {
+	// 	console.log(updateList.children[i].children.length);
+	// 	console.log(updateList.children[i]);
 
-		if (updateList.children[i].children.length == 2) {
-			console.log('This has 2 elements');
-			for (let x = 0; x < updateList.children[i].children.length; x++) {
-				console.log(updateList.children[i].children[x]);
-				updateList.children[i].removeChild(updateList.children[i].children[x]);
-			}
-		}
-	}
+	// 	if (updateList.children[i].children.length == 2) {
+	// 		console.log('This has 2 elements');
+	// 		for (let x = 0; x < updateList.children[i].children.length; x++) {
+	// 			console.log(updateList.children[i].children[x]);
+	// 			updateList.children[i].removeChild(updateList.children[i].children[x]);
+	// 		}
+	// 	}
+	// }
 
 	// First <li></li>
 	for (let i = 0; i < liFirst.children.length; i++) {
